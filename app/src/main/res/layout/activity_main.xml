@@ -6,13 +6,86 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/buttonStopListening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="16dp"
+        android:text="Stop Listening"
+        app:layout_constraintStart_toStartOf="@+id/buttonStartListening"
+        app:layout_constraintTop_toBottomOf="@+id/buttonStartListening" />
+
+    <EditText
+        android:id="@+id/editTextAccurecy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="00"
+        app:layout_constraintStart_toStartOf="@+id/textViewLatitude3"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLatitude3" />
+
+    <TextView
+        android:id="@+id/textViewLatitude3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Accurecy"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/editTextLongitude"
+        app:layout_constraintTop_toBottomOf="@+id/editTextLongitude" />
+
+    <EditText
+        android:id="@+id/editTextLongitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="00.0000"
+        app:layout_constraintStart_toStartOf="@+id/textViewLatitude2"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLatitude2" />
+
+    <TextView
+        android:id="@+id/textViewLatitude2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="184dp"
+        android:text="Longitude"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/editTextLatitude"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textViewLatitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="88dp"
+        android:text="Latitude"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextLatitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="00.0000"
+        app:layout_constraintStart_toStartOf="@+id/textViewLatitude"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLatitude" />
+
+    <Button
+        android:id="@+id/buttonStartListening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Start Listening"
+        app:layout_constraintStart_toStartOf="@+id/editTextAccurecy"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAccurecy" />
 </androidx.constraintlayout.widget.ConstraintLayout>
