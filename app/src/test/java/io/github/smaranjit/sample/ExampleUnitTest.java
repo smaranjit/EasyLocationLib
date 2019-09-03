@@ -1,4 +1,4 @@
-package com.smaranjit.sample;
+package io.github.smaranjit.sample;
 
 import org.junit.Test;
 

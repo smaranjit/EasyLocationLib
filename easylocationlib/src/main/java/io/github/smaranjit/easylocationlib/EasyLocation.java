@@ -1,4 +1,4 @@
-package com.smaranjit.easylocationlib;
+package io.github.smaranjit.easylocationlib;
 
 import android.content.Context;
 import android.location.Location;

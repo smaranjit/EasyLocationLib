@@ -1,4 +1,4 @@
-package com.smaranjit.sample;
+package io.github.smaranjit.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.smaranjit.easylocationlib.EasyLocation;
-import com.smaranjit.easylocationlib.EasyLocationSettings;
+import io.github.smaranjit.easylocationlib.EasyLocation;
+import io.github.smaranjit.easylocationlib.EasyLocationSettings;
 
 
 public class MainActivity extends AppCompatActivity implements EasyLocation.OnLocationEventListener {

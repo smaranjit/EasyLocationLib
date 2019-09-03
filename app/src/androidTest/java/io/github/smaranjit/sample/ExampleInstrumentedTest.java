@@ -1,4 +1,4 @@
-package com.smaranjit.easylocationlib;
+package io.github.smaranjit.sample;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.smaranjit.easylocationlib.test", appContext.getPackageName());
+        assertEquals("com.smaranjit.sample", appContext.getPackageName());
     }
 }

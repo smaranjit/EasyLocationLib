@@ -1,4 +1,4 @@
-package com.smaranjit.easylocationlib;
+package io.github.smaranjit.easylocationlib;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
