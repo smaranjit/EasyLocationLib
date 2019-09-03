@@ -6,35 +6,67 @@ import android.location.Location;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * created by Smaranjit M.
+ */
 public class EasyLocation {
-    static Context mCtx;
-    static LocationAdapter mLocationAdapter;
-    protected static List<OnLocationEventListener> listeners = new ArrayList<OnLocationEventListener>();
+    private LocationAdapter mLocationAdapter;
+    static List<OnLocationEventListener> listeners = new ArrayList<OnLocationEventListener>();
+    private boolean isLocationAdapterStarted = false;
 
-    public EasyLocation(){
+    private static EasyLocation single_instance = null;
 
+    private EasyLocation(Context ctx) {
+        mLocationAdapter = new LocationAdapter(ctx);
     }
-    public static EasyLocation with(Context ctx){
-        mCtx = ctx;
-        return new EasyLocation();
+
+    /**
+     * get {@link Context} reference
+     *
+     * @param ctx context reference
+     */
+    public static EasyLocation with(Context ctx) {
+        if (single_instance == null)
+            single_instance = new EasyLocation(ctx);
+        return single_instance;
     }
-    public EasyLocation listener(OnLocationEventListener listener){
+
+    /**
+     * add listener of type {@link OnLocationEventListener} for receiving location
+     *
+     * @param listener listener reference of type {@link OnLocationEventListener}
+     */
+    public EasyLocation listener(OnLocationEventListener listener) {
         try {
-            listeners.add(listener);
+            if (!listeners.contains(listener)) {
+                listeners.add(listener);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return this;
     }
 
+    /**
+     * add listener of type {@link OnLocationEventListener} for receiving location
+     *
+     * @param listener listener reference of type {@link OnLocationEventListener}
+     */
     public static void addListener(OnLocationEventListener listener) {
         try {
-            listeners.add(listener);
+            if (!listeners.contains(listener)) {
+                listeners.add(listener);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    /**
+     * removes listener of type {@link OnLocationEventListener}
+     *
+     * @param listener listener reference of type {@link OnLocationEventListener}
+     */
     public static void removeListener(OnLocationEventListener listener) {
         try {
             listeners.remove(listener);
@@ -43,15 +75,31 @@ public class EasyLocation {
         }
     }
 
-    public EasyLocation start(){
-        mLocationAdapter = new LocationAdapter(mCtx);
-        mLocationAdapter.startAdapter();
+    /**
+     * start get location and providing to all attached listener of type {@link OnLocationEventListener}
+     */
+    public EasyLocation start() {
+        if (!isLocationAdapterStarted) {
+            mLocationAdapter.startAdapter();
+            isLocationAdapterStarted = true;
+        }
         return this;
     }
-    public static void stop(){
-        mLocationAdapter.stopLocationUpdates();
+
+    /**
+     * stop all location service
+     */
+    public void stop() {
+        if (isLocationAdapterStarted) {
+            mLocationAdapter.stopLocationUpdates();
+            isLocationAdapterStarted = false;
+        }
+
     }
 
+    /**
+     * interface to implement, for attaching and receiving location data
+     */
     public interface OnLocationEventListener {
         void onLocationEvent(Location location);
     }

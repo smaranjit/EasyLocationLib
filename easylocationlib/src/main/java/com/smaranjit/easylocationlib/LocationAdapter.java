@@ -9,21 +9,29 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
-
-public class LocationAdapter {
+/**
+ * this class starts and stops location service using {@link FusedLocationProviderClient}<br>
+ * this class also provides data to all callback location listeners
+ */
+class LocationAdapter {
     private FusedLocationProviderClient mFusedLocationClient;
-    private LocationCallback mLocationCallback;
+    private static LocationCallback mLocationCallback;
     private Context ctx;
-    public LocationAdapter(Context ctx) {
+
+    LocationAdapter(Context ctx) {
         this.ctx = ctx;
     }
 
 
-    public void startAdapter() {
+    /**
+     * initializes and starts location service for fetching location data
+     */
+    void startAdapter() {
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this.ctx);
 
 
+        //receives location data
         mLocationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
@@ -32,8 +40,8 @@ public class LocationAdapter {
                 }
                 for (Location location : locationResult.getLocations()) {
                     try {
-                        for(EasyLocation.OnLocationEventListener listener : EasyLocation.listeners){
-                            if(listener!=null){
+                        for (EasyLocation.OnLocationEventListener listener : EasyLocation.listeners) {
+                            if (listener != null) {
                                 listener.onLocationEvent(location);
                             }
                         }
@@ -51,14 +59,20 @@ public class LocationAdapter {
 
     }
 
-    public void stopLocationUpdates(){
-        mFusedLocationClient.removeLocationUpdates(mLocationCallback);
-    }
-
+    /**
+     * starts fetching location data
+     */
     @SuppressLint("MissingPermission")
     private void startLocationUpdates() {
         mFusedLocationClient.requestLocationUpdates(EasyLocationSettings.mLocationRequest,
                 mLocationCallback,
                 null /* Looper */);
+    }
+
+    /**
+     * stops fetching location data
+     */
+    void stopLocationUpdates() {
+        mFusedLocationClient.removeLocationUpdates(mLocationCallback);
     }
 }
