@@ -6,7 +6,7 @@ publish {
 
     def groupProjectID = 'io.github.smaranjit'
     def artifactProjectID = 'easylocationlib'
-    def publishVersionID = '0.1.3'
+    def publishVersionID = '0.1.4'
 
     userOrg = 'smaranjit'
     repoName = 'EasyLocationLib'
