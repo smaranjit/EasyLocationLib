@@ -1,21 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
-
-//Step II: Add the below publish details
-publish {
-
-    def groupProjectID = 'io.github.smaranjit'
-    def artifactProjectID = 'easylocationlib'
-    def publishVersionID = '0.1.4'
-
-    userOrg = 'smaranjit'
-    repoName = 'EasyLocationLib'
-    groupId = groupProjectID
-    artifactId = artifactProjectID
-    publishVersion = publishVersionID
-    desc = 'Simple to use location library'
-    website = 'https://github.com/smaranjit/EasyLocationLib'
-}
 
 android {
     compileSdkVersion 29
