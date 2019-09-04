@@ -51,3 +51,4 @@ you can add any no of listener using `addListener`, which implements `EasyLocati
 ### stopping
 
 `EasyLocation.with(context).stop();`
+
